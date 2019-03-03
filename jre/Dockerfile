@@ -1,4 +1,4 @@
-FROM i386/ubuntu:xenial
+FROM f69m/ubuntu32:xenial
 
 # Install required tools and repositories
 ENV DEBIAN_FRONTEND noninteractive
@@ -45,7 +45,7 @@ RUN set -x && \
         bzip2 \
         zip \
         x11vnc xvfb openbox \
-        tzdata tzdata-java
+        tzdata
 
 # RUN java -version
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"
