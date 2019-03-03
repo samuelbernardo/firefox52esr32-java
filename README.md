@@ -11,8 +11,8 @@ Firefox 52 ESR 32bit is the latest version to support Java and is useful for web
 # Contents
 
 This docker file contains:
-- Ubuntu 14.04
-- Firefox 52 ESR 32bit
+- Ubuntu 16.04
+- Firefox 52 ESR 32bit (insecure since it's not supported anymore)
 - JRE 8 (with tag JRE)
 - JDK 8 (with tag JDK)
 
