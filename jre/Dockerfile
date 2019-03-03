@@ -27,7 +27,7 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y \
         ca-certificates-java \
-        default-jdk \
+        default-jre \
         oracle-java8-installer
 
 #RUN echo 2 | update-alternatives --config java

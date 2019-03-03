@@ -1,6 +1,6 @@
 # References
 
-This dockerfile was built reviewing the code of [docker-node-jdk-chrome-firefox](https://bitbucket.org/atlassian/docker-node-jdk-chrome-firefox/).
+This dockerfile was built reviewing the code of [docker-node-jdk-chrome-firefox](https://bitbucket.org/atlassian/docker-node-jdk-chrome-firefox/) and of [docker-firefox-java](https://github.com/ktelep/docker-firefox-java).
 
 # Dockerfile purpose
 
@@ -22,7 +22,7 @@ This docker file contains:
 
 Docker file is in directory jre inside git repository.
 
-`docker build -t <YOUR-USER>/firefox52esr32-java`
+`docker build -t firefox52esr32-java-jre <PROJECT_DIR>/jre`
 
 then use `docker images` to find image ID.
 
@@ -35,7 +35,7 @@ Then tag it: `docker tag <IMAGE_ID> <YOUR-USER>/firefox52esr32-java:jre` and fin
 
 Docker file is in directory jdk inside git repository.
 
-`docker build -t <YOUR-USER>/firefox52esr32-java`
+`docker build -t firefox52esr32-java-jdk <PROJECT_DIR>/jdk`
 
 then use `docker images` to find image ID.
 
