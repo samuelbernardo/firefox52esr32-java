@@ -41,7 +41,8 @@ RUN set -x \
     && wget https://github.com/samuelbernardo/firefox52esr32-java/raw/master/jre/jre-8u77-linux-i586.tar.gz \
     && mkdir /opt/jre \
     && tar -zxf jre-8u77-linux-i586.tar.gz -C /opt/jre \
-    && update-alternatives --install /usr/bin/java java /opt/jre/jre1.8.0_77/bin/java 100
+    && rm jre-8u77-linux-i586.tar.gz \
+    && update-alternatives --install /usr/bin/java java /opt/jre/jre1.8.0_77/bin/java 2000
 
 # RUN echo 2 | update-alternatives --config java
 # RUN java -version && update-alternatives --display java

@@ -38,11 +38,12 @@ RUN set -x \
         ca-certificates-java \
         default-jdk \
         oracle-java8-installer \
-    && https://github.com/samuelbernardo/firefox52esr32-java/raw/master/jdk/jdk-8u77-linux-i586.tar.gz \
+    && wget https://github.com/samuelbernardo/firefox52esr32-java/raw/master/jdk/jdk-8u77-linux-i586.tar.gz \
     && mkdir /opt/jdk \
     && tar -zxf jdk-8u77-linux-i586.tar.gz -C /opt/jdk \
-    && update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_77/bin/java 100 \
-    && update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_77/bin/javac 100
+    && rm jdk-8u77-linux-i586.tar.gz \
+    && update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_77/bin/java 2000 \
+    && update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_77/bin/javac 2000
 
 # RUN echo 2 | update-alternatives --config java
 # RUN java -version && update-alternatives --display java && update-alternatives --display javac
