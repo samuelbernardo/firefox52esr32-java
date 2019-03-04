@@ -43,9 +43,9 @@ RUN set -x \
     && tar -zxf jdk-8u77-linux-i586.tar.gz -C /opt/jdk \
     && rm jdk-8u77-linux-i586.tar.gz \
     && update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_77/bin/java 2000 \
-    && echo 0 | update-alternatives --config java \
+    && update-alternatives --set java /opt/jdk/jdk1.8.0_77/bin/java \
     && update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_77/bin/javac 2000 \
-    && echo 0 | update-alternatives --config javac
+    && update-alternatives --set javac /opt/jdk/jdk1.8.0_77/bin/javac
 
 # RUN echo 2 | update-alternatives --config java
 # RUN java -version && update-alternatives --display java && update-alternatives --display javac
