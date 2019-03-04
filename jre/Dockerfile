@@ -37,9 +37,14 @@ RUN set -x \
     && apt-get install -y \
         ca-certificates-java \
         default-jre \
-        oracle-java8-installer
+        oracle-java8-installer \
+    && wget https://github.com/samuelbernardo/firefox52esr32-java/raw/master/jre/jre-8u77-linux-i586.tar.gz \
+    && mkdir /opt/jre \
+    && tar -zxf jre-8u77-linux-i586.tar.gz -C /opt/jre \
+    && update-alternatives --install /usr/bin/java java /opt/jre/jre1.8.0_77/bin/java 100
 
-#RUN echo 2 | update-alternatives --config java
+# RUN echo 2 | update-alternatives --config java
+# RUN java -version && update-alternatives --display java
 
 # Install firefox
 RUN set -x \
@@ -50,7 +55,6 @@ RUN set -x \
     && rm firefox*.tar.bz2 \
     && ln -sf /opt/firefox/firefox /usr/bin/firefox
 
-# RUN java -version
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"
 
 # Autostart firefox (might not be the best way to do it, but it does the trick)
