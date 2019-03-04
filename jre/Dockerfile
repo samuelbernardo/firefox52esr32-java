@@ -20,6 +20,15 @@ RUN set -x \
 ENV LANG en_US.utf8
 RUN locale-gen $LANG
 
+# Additional tools
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y \
+        bzip2 \
+        zip \
+        x11vnc xvfb openbox \
+        tzdata sudo bash-completion
+
 # Install JDK 8
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
@@ -35,22 +44,23 @@ RUN set -x \
 # Install firefox
 RUN set -x \
     && apt-get update \
-    && apt-get install -y \
-        firefox-esr
-
-# Additional tools
-RUN set -x && \
-    apt-get update && \
-    apt-get install -y \
-        bzip2 \
-        zip \
-        x11vnc xvfb openbox \
-        tzdata
+    && apt-get install -y firefox-esr \
+    && wget https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/45.0.2/linux-i686/en-US/firefox-45.0.2.tar.bz2 \
+    && tar -xjvf firefox*.tar.bz2 -C /opt \
+    && rm firefox*.tar.bz2 \
+    && ln -sf /opt/firefox/firefox /usr/bin/firefox
 
 # RUN java -version
 # RUN apt-cache policy firefox-esr | grep Installed | sed -e "s/Installed/Firefox/"
 
 # Autostart firefox (might not be the best way to do it, but it does the trick)
-RUN bash -c 'echo "exec openbox-session &" >> ~/.xinitrc' \
-    && bash -c 'echo "firefox" >> ~/.xinitrc' \
-    && bash -c 'chmod 755 ~/.xinitrc'
+RUN bash -c 'useradd -m -s /bin/bash firefox' \
+    && bash -c 'usermod -aG sudo,audio,video,uucp,cdrom,plugdev firefox' \
+    && bash -c 'echo "exec openbox-session &" >> ~firefox/.xinitrc' \
+    && bash -c 'echo "firefox" >> ~firefox/.xinitrc' \
+    && bash -c 'chown firefox:firefox ~firefox/.xinitrc' \
+    && bash -c 'chmod 755 ~firefox/.xinitrc'
+
+# Run by default firefox when container is launched
+#CMD firefox-esr
+CMD firefox

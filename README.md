@@ -28,7 +28,7 @@ then use `docker images` to find image ID.
 
 With the following command
 
-`docker run -it --rm --net=host --env="DISPLAY=unix$DISPLAY" --privileged --env="QT_X11_NO_MITSHM=1" --volume="$HOME/.Xauthority:/home/firefox/.Xauthority:rw" --volume "/tmp/.X11-unix:/tmp/.X11-unix" <IMAGE_ID>`
+`docker run -it --rm --user=firefox --net=host --env="DISPLAY=unix$DISPLAY" --privileged --env="QT_X11_NO_MITSHM=1" --volume="/var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm" --volume="$HOME/.Xauthority:/home/firefox/.Xauthority:rw" --volume "/tmp/.X11-unix:/tmp/.X11-unix" <IMAGE_ID>`
 
 you can test if your changes are the desired ones.
 
@@ -45,7 +45,7 @@ then use `docker images` to find image ID.
 
 With the following command
 
-`docker run -it --rm --net=host --env="DISPLAY=unix$DISPLAY" --privileged --env="QT_X11_NO_MITSHM=1" --volume="$HOME/.Xauthority:/home/firefox/.Xauthority:rw" --volume "/tmp/.X11-unix:/tmp/.X11-unix" <IMAGE_ID>`
+`docker run -it --rm --user=firefox --net=host --env="DISPLAY=unix$DISPLAY" --privileged --env="QT_X11_NO_MITSHM=1" --volume="/var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm" --volume="$HOME/.Xauthority:/home/firefox/.Xauthority:rw" --volume "/tmp/.X11-unix:/tmp/.X11-unix" <IMAGE_ID>`
 
 you can test if your changes are the desired ones.
 
