@@ -42,7 +42,8 @@ RUN set -x \
     && mkdir /opt/jre \
     && tar -zxf jre-8u77-linux-i586.tar.gz -C /opt/jre \
     && rm jre-8u77-linux-i586.tar.gz \
-    && update-alternatives --install /usr/bin/java java /opt/jre/jre1.8.0_77/bin/java 2000
+    && update-alternatives --install /usr/bin/java java /opt/jre/jre1.8.0_77/bin/java 2000 \
+    && echo 0 | update-alternatives --config java
 
 # RUN echo 2 | update-alternatives --config java
 # RUN java -version && update-alternatives --display java
